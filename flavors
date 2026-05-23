@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Página con scroll</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth; /* scroll suave al hacer clic en enlaces */
+    }
+
+    body {
+      font-family: system-ui, sans-serif;
+      line-height: 1.6;
+    }
+
+    /* Barra de navegación fija */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: #1a1a2e;
+      color: white;
+      padding: 1rem 2rem;
+      z-index: 100;
+    }
+
+    nav a {
+      color: #eee;
+      margin-right: 1.5rem;
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      color: #4fc3f7;
+    }
+
+    /* Cada sección ocupa al menos toda la pantalla */
+    section {
+      min-height: 100vh;
+      padding: 6rem 2rem 4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    #inicio   { background: #0f3460; color: white; }
+    #servicios { background: #e8f4f8; }
+    #contacto  { background: #16213e; color: white; }
+
+    h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+    p  { max-width: 600px; }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="#inicio">Inicio</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+
+  <section id="inicio">
+    <h1>Bienvenido</h1>
+    <p>Desplázate hacia abajo o usa el menú para navegar entre secciones.</p>
+  </section>
+
+  <section id="servicios">
+    <h1>Servicios</h1>
+    <p>Esta sección también ocupa toda la altura de la pantalla. El scroll aparece cuando el contenido supera el viewport.</p>
+  </section>
+
+  <section id="contacto">
+    <h1>Contacto</h1>
+    <p>Última sección. Aquí termina el scroll de la página.</p>
+  </section>
+</body>
+</html>
