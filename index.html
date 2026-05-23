@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asadero y Restaurante La Nueva Casona</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- Variables de Color --- */
+        :root {
+            --primary: #d97706; /* Naranja cálido */
+            --primary-dark: #b45309;
+            --secondary: #78350f; /* Marrón oscuro */
+            --bg-cream: #fffbeb; /* Crema */
+            --bg-card: #ffffff;
+            --text-dark: #292524;
+            --text-light: #78716c;
+            --wa-color: #25D366;
+        }
+
+        /* --- Estilos Base --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-cream);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--secondary);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--primary);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        /* --- Navegación --- */
+        nav {
+            background-color: var(--secondary);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(120, 53, 15, 0.8), rgba(217, 119, 6, 0.6)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><rect width="100%" height="100%" fill="%23b45309"/></svg>') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+            margin-top: 60px; /* Offset for fixed nav */
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            color: white;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        /* --- Nosotros Section --- */
+        .nosotros-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nosotros-text {
+            flex: 1 1 400px;
+        }
+
+        .nosotros-info {
+            flex: 1 1 300px;
+            background-color: var(--bg-card);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px rgba(0,0,0,0.05);
+            border-top: 5px solid var(--primary);
+        }
+
+        .info-item {
+            margin-bottom: 1rem;
+        }
+
+        .info-item h4 {
+            color: var(--primary-dark);
+            margin-bottom: 0.2rem;
+        }
+
+        /* --- Menú Section --- */
+        #menu {
+            background-color: #fef8f0;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .menu-card {
+            background: var(--bg-card);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.1);
+        }
+
+        .menu-img-placeholder {
+            height: 200px;
+            background: linear-gradient(45deg, var(--primary), #fbbf24);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,0.7);
+            font-style: italic;
+        }
+
+        .menu-img-placeholder.img-1 { background: linear-gradient(45deg, #d97706, #f59e0b); }
+        .menu-img-placeholder.img-2 { background: linear-gradient(45deg, #b45309, #d97706); }
+        .menu-img-placeholder.img-3 { background: linear-gradient(45deg, #92400e, #b45309); }
+        .menu-img-placeholder.img-4 { background: linear-gradient(45deg, #ea580c, #f97316); }
+        .menu-img-placeholder.img-5 { background: linear-gradient(45deg, #c2410c, #ea580c); }
+        .menu-img-placeholder.img-6 { background: linear-gradient(45deg, #f59e0b, #fbbf24); }
+
+        .menu-content {
+            padding: 1.5rem;
+        }
+
+        .menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-title {
+            font-size: 1.2rem;
+            color: var(--secondary);
+        }
+
+        .menu-price {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        .menu-desc {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* --- Galería Section --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            height: 250px;
+            border-radius: 8px;
+            transition: transform 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 1px;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+
+        .g-1 { background-color: #78350f; }
+        .g-2 { background-color: #92400e; }
+        .g-3 { background-color: #b45309; }
+        .g-4 { background-color: #d97706; }
+        .g-5 { background-color: #f59e0b; }
+        .g-6 { background-color: #fbbf24; }
+
+        /* --- Contacto Section --- */
+        #contacto {
+            background-color: var(--bg-card);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            background-color: var(--bg-cream);
+            padding: 2rem;
+            border-radius: 12px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .btn-wa {
+            background-color: var(--wa-color);
+            color: white;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-wa:hover {
+            background-color: #128C7E;
+            transform: translateY(-2px);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 350px;
+            border: 0;
+            border-radius: 12px;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--secondary);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .social-icons {
+            margin: 1rem 0;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .social-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            transition: background 0.3s;
+            cursor: pointer;
+        }
+
+        .social-circle:hover {
+            background-color: var(--primary);
+        }
+
+        /* --- Botón Flotante WhatsApp --- */
+        .float-wa {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--wa-color);
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s;
+        }
+
+        .float-wa:hover {
+            transform: scale(1.1);
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.5rem; }
+            .nav-links { display: none; /* Simplificado para móvil en demo */ }
+            .contact-content { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="https://wa.me/573173843599" target="_blank" class="float-wa">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.004-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
+        </svg>
+    </a>
+
+    <nav>
+        <div class="nav-container">
+            <div class="logo">La Nueva Casona</div>
+            <ul class="nav-links">
+                <li><a href="#hero">Inicio</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#menu">Menú</a></li>
+                <li><a href="#galeria">Galería</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header id="hero" class="hero">
+        <div class="hero-content">
+            <h1>Asadero y Restaurante <br>La Nueva Casona</h1>
+            <p>El auténtico sabor campestre y la mejor cocina tradicional vallecaucana en Zarzal.</p>
+            <a href="#menu" class="btn btn-primary" onclick="scrollToMenu(event)">Ver menú completo</a>
+        </div>
+    </header>
+
+    <section id="nosotros">
+        <div class="container">
+            <h2 class="section-title">Sobre Nosotros</h2>
+            <div class="nosotros-content">
+                <div class="nosotros-text">
+                    <h3>Un ambiente familiar para disfrutar</h3>
+                    <p style="margin-top: 1rem;">En Asadero y Restaurante La Nueva Casona nos enorgullecemos de servir los mejores platos caseros y a la parrilla, manteniendo viva la tradición de la gastronomía típica vallecaucana. Disfruta de nuestras amplias instalaciones campestres ideales para compartir con toda tu familia en un ambiente acogedor, rústico y lleno de sabor.</p>
+                </div>
+                <div class="nosotros-info">
+                    <div class="info-item">
+                        <h4>📍 Dirección</h4>
+                        <p>Cra 10 #8-25, Zarzal, Valle del Cauca</p>
+                    </div>
+                    <div class="info-item">
+                        <h4>🕒 Horario de Atención</h4>
+                        <p>Lunes a Domingo<br>11:00 AM - 10:00 PM</p>
+                    </div>
+                    <div class="info-item">
+                        <h4>📞 Teléfono</h4>
+                        <p>+57 317 3843599</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="menu">
+        <div class="container">
+            <h2 class="section-title">Nuestro Menú</h2>
+            <div class="menu-grid">
+                
+                <div class="menu-card">
+                    <div class="menu-img-placeholder img-1">Foto Sancocho</div>
+                    <div class="menu-content">
+                        <div class="menu-header">
+                            <h3 class="menu-title">Sancocho de Gallina</h3>
+                            <span class="menu-price">$25.000</span>
+                        </div>
+                        <p class="menu-desc">Tradicional sancocho vallecaucano hecho en fogón de leña. Acompañado de arroz, ensalada y aguacate.</p>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="menu-img-placeholder img-2">Foto Chuleta</div>
+                    <div class="menu-content">
+                        <div class="menu-header">
+                            <h3 class="menu-title">Chuleta Valluna</h3>
+                            <span class="menu-price">$28.000</span>
+                        </div>
+                        <p class="menu-desc">Corte de cerdo apanado, crujiente por fuera y jugoso por dentro. Con papas a la francesa, arroz y ensalada.</p>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="menu-img-placeholder img-3">Foto Bandeja Paisa</div>
+                    <div class="menu-content">
+                        <div class="menu-header">
+                            <h3 class="menu-title">Bandeja Paisa</h3>
+                            <span class="menu-price">$32.000</span>
+                        </div>
+                        <p class="menu-desc">Frijol, arroz, chicharrón carnudo, carne molida, chorizo, huevo frito, tajada de maduro y arepa.</p>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="menu-img-placeholder img-4">Foto Costillas</div>
+                    <div class="menu-content">
+                        <div class="menu-header">
+                            <h3 class="menu-title">Costilla a la Parrilla</h3>
+                            <span class="menu-price">$30.000</span>
+                        </div>
+                        <p class="menu-desc">Costillas de cerdo marinadas con la receta de la casa, asadas a la parrilla. Incluye papa salada, arepa y chimichurri.</p>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="menu-img-placeholder img-5">Foto Picada</div>
+                    <div class="menu-content">
+                        <div class="menu-header">
+                            <h3 class="menu-title">Picada Casona (2 pers)</h3>
+                            <span class="menu-price">$45.000</span>
+                        </div>
+                        <p class="menu-desc">Mix de carnes: res, cerdo, chicharrón, chorizo, morcilla, papa criolla, patacón y ají casero.</p>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="menu-img-placeholder img-6">Foto Jugos</div>
+                    <div class="menu-content">
+                        <div class="menu-header">
+                            <h3 class="menu-title">Jugos Naturales</h3>
+                            <span class="menu-price">$7.000</span>
+                        </div>
+                        <p class="menu-desc">Refrescantes jugos en agua o leche: Lulo, Mora, Mango, Maracuyá, Guanábana y Limonada natural.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="galeria">
+        <div class="container">
+            <h2 class="section-title">Galería Campestre</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item g-1">Fachada Rústica</div>
+                <div class="gallery-item g-2">Área de Parrilla</div>
+                <div class="gallery-item g-3">Comedor Principal</div>
+                <div class="gallery-item g-4">Zonas Verdes</div>
+                <div class="gallery-item g-5">Platos en la Mesa</div>
+                <div class="gallery-item g-6">Fogón de Leña</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto">
+        <div class="container">
+            <h2 class="section-title">Visítanos o Haz tu Pedido</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Estamos para atenderte</h3>
+                    <p>Realiza tus domicilios o reserva tu mesa directamente a través de nuestro canal de WhatsApp. ¡Te responderemos de inmediato!</p>
+                    
+                    <div style="margin: 1.5rem 0;">
+                        <strong>📍 Cra 10 #8-25, Zarzal, Valle del Cauca, Colombia.</strong>
+                    </div>
+
+                    <a href="https://wa.me/573173843599" target="_blank" class="btn btn-wa">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.004-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
+                        </svg>
+                        +57 317 3843599
+                    </a>
+                </div>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15915.228221808453!2d-76.079237!3d4.394874!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e39ad850dfd9e2b%3A0xc6fb0e060c239d5e!2sZarzal%2C%20Valle%20del%20Cauca!5e0!3m2!1ses!2sco!4v1700000000000!5m2!1ses!2sco" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container" style="padding: 2rem 0;">
+            <h3 style="color: white; margin-bottom: 0.5rem;">Asadero y Restaurante La Nueva Casona</h3>
+            <p style="font-weight: 300; font-size: 0.9rem;">El mejor sabor campestre en Zarzal</p>
+            
+            <div class="social-icons">
+                <div class="social-circle" title="Facebook">f</div>
+                <div class="social-circle" title="Instagram">IG</div>
+            </div>
+
+            <div style="margin-top: 1.5rem; font-size: 0.8rem; opacity: 0.7;">
+                &copy; 2026 Asadero y Restaurante La Nueva Casona. Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Función para desplazamiento suave al hacer clic en "Ver menú"
+        function scrollToMenu(e) {
+            e.preventDefault();
+            const target = document.querySelector('#menu');
+            const offsetTop = target.offsetTop - 60; // Compensar por la barra de navegación fija
+            
+            window.scrollTo({
+                top: offsetTop,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</body>
+</html>
