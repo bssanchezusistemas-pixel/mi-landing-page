@@ -275,7 +275,7 @@
       const btn = form.querySelector("button[type=submit]");
       if (btn) {
         const orig = btn.textContent;
-        btn.textContent = "Message Sent ✓";
+        btn.textContent = "¡Mensaje enviado!";
         btn.disabled = true;
         setTimeout(() => {
           btn.textContent = orig;
