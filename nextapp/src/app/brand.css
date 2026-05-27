@@ -1,0 +1,121 @@
+/* Coclí Hotel — paleta con alto contraste */
+
+:root {
+  --bg: #14100c;
+  --bg-elevated: #1f1812;
+  --bg-card: rgba(31, 24, 18, 0.88);
+  --orange: #d4a24c;
+  --orange-soft: #e8c078;
+  --red: #a85c38;
+  --gold: #f0d48a;
+  --text: #faf6f0;
+  --text-muted: #d8cdc0;
+  --glass: rgba(255, 248, 240, 0.06);
+  --glass-border: rgba(212, 162, 76, 0.28);
+  --glow: rgba(212, 162, 76, 0.35);
+}
+
+.section-label,
+.menu-card-tag,
+.contact-item h4,
+.footer-col h4,
+.hero-highlights li::before {
+  color: var(--gold);
+}
+
+.menu-card p,
+.about-content p,
+.promo-content p,
+.testimonial-card p,
+.contact-item p,
+.footer-brand p,
+.footer-col a {
+  color: var(--text-muted);
+}
+
+.navbar.scrolled {
+  background: rgba(20, 16, 12, 0.94);
+}
+
+.btn-primary {
+  color: #1a1410;
+  font-weight: 700;
+}
+
+.nav-cta,
+.btn-primary {
+  background: linear-gradient(135deg, var(--gold), var(--orange-soft));
+}
+
+.logo-img {
+  height: 44px;
+  width: auto;
+  object-fit: contain;
+}
+
+.logo-text {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .logo-img {
+    height: 36px;
+  }
+}
+
+.menu-intro {
+  text-align: center;
+  max-width: 36rem;
+  margin: -2rem auto 2.5rem;
+  color: var(--text);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.menu-cta-wrap {
+  text-align: center;
+  margin-top: 2.5rem;
+}
+
+.promo-cocli .promo-bg {
+  background-image: url("/images/gallery-2.jpg");
+}
+
+.about-parallax-bg {
+  background-image: url("/images/hero-hotel.jpg");
+}
+
+.about-float img {
+  object-fit: contain;
+  padding: 0.75rem;
+  background: var(--bg-elevated);
+}
+
+.contact-form input,
+.contact-form textarea {
+  color: var(--text);
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: #b8aea3;
+}
+
+.nav-links a {
+  color: #e8dfd4;
+}
+
+.nav-links a:hover {
+  color: var(--text);
+}
+
+.section-title,
+.about-content h2,
+.promo-content h2,
+.contact-info h2 {
+  color: var(--text);
+}
+
+.menu-card h3 {
+  color: var(--text);
+}

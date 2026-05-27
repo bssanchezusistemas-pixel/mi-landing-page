@@ -1,4 +1,4 @@
-/* Flavor House — Premium Dark Luxury */
+﻿/* Flavor House â€” Premium Dark Luxury */
 
 :root {
   --bg: #050505;
@@ -189,113 +189,12 @@ ul {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  padding: calc(var(--nav-h) + 2rem) 0 4rem;
-}
-
-.hero--premium .hero-overlay {
-  background:
-    radial-gradient(ellipse 70% 55% at 75% 35%, rgba(245, 166, 35, 0.12), transparent 55%),
-    radial-gradient(ellipse 90% 70% at 50% 100%, rgba(255, 77, 26, 0.14), transparent 62%),
-    linear-gradient(105deg, rgba(5, 5, 5, 0.92) 0%, rgba(5, 5, 5, 0.55) 48%, rgba(5, 5, 5, 0.78) 100%),
-    linear-gradient(180deg, rgba(5, 5, 5, 0.35) 0%, var(--bg) 100%);
-}
-
-.hero-inner {
-  position: relative;
-  z-index: 2;
-  width: min(1200px, 92vw);
-  margin-inline: auto;
-  display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
-  gap: clamp(2rem, 5vw, 4rem);
-  align-items: center;
-}
-
-.hero--premium .hero-content {
-  text-align: left;
-  max-width: 36rem;
-  padding: 0;
-}
-
-.hero-eyebrow {
-  color: var(--gold);
-}
-
-.hero-accent {
-  background: linear-gradient(135deg, var(--gold), var(--orange-soft));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-.hero-highlights {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.65rem 1.25rem;
-  margin-top: 2rem;
-  list-style: none;
-}
-
-.hero-highlights li {
-  font-size: 0.68rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  padding-left: 1rem;
-  position: relative;
-}
-
-.hero-highlights li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 50%;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: var(--orange);
-  transform: translateY(-50%);
-}
-
-.hero-visual {
-  position: relative;
-  justify-self: end;
-  width: min(100%, 420px);
-}
-
-.hero-visual-frame {
-  border-radius: 28px;
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.55);
-}
-
-.hero-visual-frame img {
-  width: 100%;
-  aspect-ratio: 4/5;
-  object-fit: cover;
-  filter: brightness(0.92) contrast(1.08) saturate(1.08);
-}
-
-.hero-visual-badge {
-  position: absolute;
-  bottom: 1.25rem;
-  left: 1.25rem;
-  font-size: 0.65rem;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  padding: 0.55rem 0.9rem;
-  border-radius: 100px;
-  background: rgba(5, 5, 5, 0.72);
-  border: 1px solid rgba(245, 166, 35, 0.35);
-  color: var(--gold);
-  backdrop-filter: blur(12px);
 }
 
 .hero-bg {
   position: absolute;
   inset: -10%;
-  background: url("../images/hero-burger.png") center 40% / cover no-repeat;
+  background: url("/images/hero-burger.png") center 40% / cover no-repeat;
   filter: brightness(0.55) contrast(1.15) saturate(1.1);
   will-change: transform;
   transform: scale(1.08);
@@ -648,7 +547,7 @@ section {
   right: -15%;
   width: 55%;
   height: 80%;
-  background: url("../images/signature-burger.png") center / cover no-repeat;
+  background: url("/images/signature-burger.png") center / cover no-repeat;
   filter: brightness(0.25) blur(2px);
   opacity: 0.35;
   will-change: transform;
@@ -775,7 +674,7 @@ section {
 .promo-bg {
   position: absolute;
   inset: 0;
-  background: url("../images/meat-platter.png") center / cover no-repeat;
+  background: url("/images/meat-platter.png") center / cover no-repeat;
   filter: brightness(0.45) contrast(1.15);
   will-change: transform;
 }
@@ -1261,36 +1160,7 @@ body.scrolling .glow-orb {
   }
 }
 
-@media (max-width: 900px) {
-  .hero-inner {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-
-  .hero--premium .hero-content {
-    text-align: center;
-    margin-inline: auto;
-  }
-
-  .hero-buttons {
-    justify-content: center;
-  }
-
-  .hero-highlights {
-    justify-content: center;
-  }
-
-  .hero-visual {
-    justify-self: center;
-    width: min(88vw, 360px);
-  }
-}
-
 @media (max-width: 768px) {
-  .hero-visual {
-    display: none;
-  }
-
   .nav-links,
   .nav-cta {
     display: none;
@@ -1359,3 +1229,4 @@ body.scrolling .glow-orb {
     scroll-behavior: auto;
   }
 }
+

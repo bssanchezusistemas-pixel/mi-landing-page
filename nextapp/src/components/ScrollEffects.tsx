@@ -28,20 +28,11 @@ export default function ScrollEffects() {
     function parallaxFrame() {
       const y = window.scrollY;
 
-      const heroBg = document.querySelector(".hero-bg") as HTMLElement | null;
       const promoBg = document.querySelector(".promo-bg") as HTMLElement | null;
       const aboutParallax = document.querySelector(
         ".about-parallax-bg"
       ) as HTMLElement | null;
       const floatEls = document.querySelectorAll<HTMLElement>("[data-parallax]");
-
-      if (heroBg) {
-        const heroRect = heroBg.closest(".hero")?.getBoundingClientRect();
-        if (heroRect && heroRect.bottom > 0) {
-          const speed = 0.35;
-          (heroBg as HTMLElement).style.transform = `scale(1.08) translateY(${y * speed}px)`;
-        }
-      }
 
       if (promoBg) {
         const promo = promoBg.closest(".promo-inner") as HTMLElement | null;
@@ -148,30 +139,6 @@ export default function ScrollEffects() {
       document
         .querySelectorAll<HTMLElement>("[data-reveal-title]")
         .forEach((t) => titleObserver.observe(t));
-    }
-
-    /* Hero entrance (solo si seguimos usando clases del hero actual) */
-    function heroEntrance() {
-      const targets = [".hero-eyebrow", ".hero-subtitle", ".hero-buttons"];
-      targets.forEach((sel, i) => {
-        const el = document.querySelector(sel) as HTMLElement | null;
-        if (!el) return;
-        window.setTimeout(() => {
-          el.style.transition =
-            "opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1)";
-          el.style.opacity = "1";
-          el.style.transform = "translateY(0)";
-        }, 400 + i * 200);
-      });
-
-      document.querySelectorAll<HTMLElement>(".hero-title .word").forEach((word, i) => {
-        window.setTimeout(() => {
-          word.style.transition =
-            "opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1)";
-          word.style.opacity = "1";
-          word.style.transform = "translateY(0)";
-        }, 200 + i * 120);
-      });
     }
 
     function initTilt() {
@@ -297,7 +264,6 @@ export default function ScrollEffects() {
 
     function init() {
       initTitleReveal();
-      heroEntrance();
       animateCounters();
       initTilt();
       initMobileNav();
