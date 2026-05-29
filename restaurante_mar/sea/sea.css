@@ -1,0 +1,195 @@
+/* Marea — tema océano (sobre style.css base) */
+
+body.marea {
+  --bg: #040f14;
+  --bg-elevated: #0a1a22;
+  --bg-card: rgba(10, 26, 34, 0.82);
+  --orange: #3ec6b6;
+  --orange-soft: #6de8d8;
+  --red: #e07a6a;
+  --gold: #8fd4ff;
+  --text: #f4f9fc;
+  --text-muted: #c5d6e0;
+  --glass: rgba(143, 212, 255, 0.06);
+  --glass-border: rgba(62, 198, 182, 0.22);
+  --glow: rgba(62, 198, 182, 0.38);
+}
+
+body.marea .scroll-progress {
+  background: linear-gradient(90deg, #1a6b8a, var(--orange), var(--gold));
+}
+
+body.marea .logo span,
+body.marea .logo-img-wrap {
+  color: var(--gold);
+}
+
+body.marea .nav-cta,
+body.marea .btn-primary {
+  background: linear-gradient(135deg, #1a8a9e, var(--orange));
+  color: #041018;
+  font-weight: 700;
+}
+
+body.marea .hero-bg {
+  background-image: url("../imagenes/hero-mar.jpg");
+  background-position: center 45%;
+  filter: brightness(0.48) contrast(1.1) saturate(1.05);
+}
+
+body.marea .hero--premium .hero-overlay {
+  background:
+    radial-gradient(ellipse 70% 55% at 75% 35%, rgba(143, 212, 255, 0.14), transparent 55%),
+    radial-gradient(ellipse 90% 70% at 50% 100%, rgba(62, 198, 182, 0.16), transparent 62%),
+    linear-gradient(105deg, rgba(4, 15, 20, 0.93) 0%, rgba(4, 15, 20, 0.62) 48%, rgba(4, 15, 20, 0.85) 100%),
+    linear-gradient(180deg, rgba(4, 15, 20, 0.35) 0%, var(--bg) 100%);
+}
+
+body.marea .hero-glow {
+  background: radial-gradient(circle, rgba(62, 198, 182, 0.28) 0%, transparent 70%);
+}
+
+body.marea .hero-accent {
+  background: linear-gradient(135deg, var(--gold), var(--orange-soft));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+body.marea .about-parallax-bg {
+  background-image: url("../imagenes/marisco-1.jpg");
+}
+
+body.marea .promo-bg {
+  background-image: url("../imagenes/marisco-2.png");
+  background-position: center;
+}
+
+/* Logo en navbar */
+body.marea .logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 1rem;
+}
+
+body.marea .logo-img {
+  height: 42px;
+  width: auto;
+  object-fit: contain;
+}
+
+body.marea .logo-text {
+  font-family: "Syne", sans-serif;
+  font-weight: 800;
+  font-size: 1.25rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+body.marea .logo-text span {
+  color: var(--orange);
+}
+
+/* Hero: textos visibles y bien alineados */
+body.marea .hero-inner {
+  width: min(1140px, 92vw);
+  align-items: center;
+}
+
+body.marea .hero--premium .hero-content {
+  text-align: left;
+  padding-top: 0.5rem;
+}
+
+body.marea .hero-title {
+  font-size: clamp(2rem, 6vw, 3.75rem);
+  line-height: 1.08;
+  margin-bottom: 1rem;
+}
+
+body.marea .hero-subtitle {
+  max-width: 34rem;
+  line-height: 1.75;
+  margin-bottom: 2rem;
+}
+
+body.marea .hero-buttons {
+  justify-content: flex-start;
+  margin-bottom: 0;
+}
+
+body.marea .hero-highlights {
+  margin-top: 1.75rem;
+}
+
+body.marea .hero-highlights li::before {
+  background: var(--orange);
+}
+
+body.marea .hero-visual-badge {
+  border-color: rgba(143, 212, 255, 0.4);
+  color: var(--gold);
+}
+
+body.marea .hero-scroll {
+  bottom: 1.25rem;
+}
+
+/* Fallback si JS tarda: evitar textos ocultos */
+body.marea.js-ready .hero-eyebrow,
+body.marea.js-ready .hero-subtitle,
+body.marea.js-ready .hero-buttons,
+body.marea.js-ready .hero-title .word {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+body.marea .menu-card-body {
+  margin-top: -3.5rem;
+}
+
+body.marea .about-float img {
+  object-fit: contain;
+  padding: 0.75rem;
+  background: var(--bg-elevated);
+  aspect-ratio: 1;
+}
+
+body.marea .menu-card h3,
+body.marea .section-title,
+body.marea .about-content h2 {
+  color: var(--text);
+}
+
+body.marea .menu-card p {
+  color: var(--text-muted);
+}
+
+@media (max-width: 900px) {
+  body.marea .hero--premium .hero-content {
+    text-align: center;
+    margin-inline: auto;
+  }
+
+  body.marea .hero-buttons {
+    justify-content: center;
+  }
+
+  body.marea .hero-highlights {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  body.marea .logo-img {
+    height: 34px;
+  }
+
+  body.marea .hero {
+    padding-bottom: 5.5rem;
+  }
+}
