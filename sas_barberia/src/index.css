@@ -1,0 +1,177 @@
+@import "tailwindcss";
+
+@theme {
+  --color-vintage-dark: #120C08;      /* Marrón cuero profundo */
+  --color-vintage-card: #1C120C;      /* Marrón de tarjeta */
+  --color-vintage-border: #3A261A;    /* Borde de madera */
+  --color-vintage-borderLight: #593D2C; /* Borde más claro */
+  --color-vintage-gold: #D4AF37;      /* Dorado clásico */
+  --color-vintage-goldLight: #E8C55A; /* Dorado claro para hover */
+  --color-vintage-bronze: #C5A880;    /* Bronce cepillado */
+  --color-vintage-cream: #F4EAD4;     /* Crema pergamino */
+  --color-vintage-burgundy: #5A181E;  /* Borgoña clásico */
+  --color-vintage-green: #1B3322;     /* Verde bosque */
+  --color-vintage-panel: #150E09;     /* Color de paneles oscuros */
+
+  --font-serif: "Playfair Display", Cinzel, serif;
+  --font-sans: Montserrat, sans-serif;
+  --font-handwritten: "Courier New", Courier, monospace;
+
+  --shadow-gold-sm: 0 0 5px rgba(212, 175, 55, 0.2);
+  --shadow-gold-md: 0 0 15px rgba(212, 175, 55, 0.4);
+  --shadow-gold-lg: 0 0 25px rgba(212, 175, 55, 0.6);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #120c08;
+}
+::-webkit-scrollbar-thumb {
+  background: #3a261a;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #d4af37;
+}
+
+/* Vintage Frame Borders */
+.vintage-double-border {
+  border: 4px double #d4af37;
+}
+
+.vintage-inner-border {
+  position: relative;
+}
+.vintage-inner-border::after {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  right: 4px;
+  bottom: 4px;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+/* Wood & Slate Textures */
+.wood-overlay {
+  background-image: radial-gradient(circle, rgba(29,19,11,0.2) 0%, rgba(18,12,8,0.9) 100%), 
+                    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
+}
+
+.chalkboard-bg {
+  background-color: #1a1a1a;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='chalk'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/%3E%3CfeColorMatrix type='matrix' values='1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 0.07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23chalk)'/%3E%3C/svg%3E");
+  border: 8px solid #2d1d13;
+  box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
+}
+
+/* Polaroid Photo Styling */
+.polaroid-card {
+  background: #fdfaf2;
+  color: #2c2520;
+  padding: 12px 12px 24px 12px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+  border: 1px solid #eadeca;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.polaroid-card:hover {
+  transform: scale(1.05) rotate(0deg) !important;
+  box-shadow: 0 15px 30px rgba(212, 175, 55, 0.25);
+  z-index: 10;
+}
+
+/* Vintage Booking Ticket */
+.ticket-container {
+  background-color: #f7f1e3;
+  color: #2c1e15;
+  font-family: 'Courier New', Courier, monospace;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+  position: relative;
+  overflow: hidden;
+}
+
+.ticket-top-border {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background-image: linear-gradient(-45deg, #120c08 4px, transparent 0), 
+                    linear-gradient(45deg, #120c08 4px, transparent 0);
+  background-size: 8px 8px;
+  background-repeat: repeat-x;
+}
+
+.ticket-bottom-border {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background-image: linear-gradient(-45deg, transparent 4px, #120c08 0), 
+                    linear-gradient(45deg, transparent 4px, #120c08 0);
+  background-size: 8px 8px;
+  background-repeat: repeat-x;
+}
+
+.ticket-divider {
+  border-top: 2px dashed #8b7355;
+  position: relative;
+}
+.ticket-divider::before, .ticket-divider::after {
+  content: '';
+  position: absolute;
+  top: -8px;
+  width: 16px;
+  height: 16px;
+  background-color: #120c08;
+  border-radius: 50%;
+}
+.ticket-divider::before {
+  left: -8px;
+}
+.ticket-divider::after {
+  right: -8px;
+}
+
+/* Gold Shimmer Button Animation */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.shimmer-btn {
+  background: linear-gradient(90deg, #d4af37 25%, #f4ead4 50%, #d4af37 75%);
+  background-size: 200% auto;
+  color: #120c08;
+  font-weight: 700;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.4);
+}
+.shimmer-btn:hover {
+  animation: shimmer 1.5s infinite linear;
+}
+
+/* Sepia Photo Transition */
+.sepia-hover {
+  filter: sepia(60%) contrast(110%) brightness(90%);
+  transition: all 0.5s ease;
+}
+.sepia-hover:hover {
+  filter: sepia(0%) contrast(100%) brightness(100%);
+}
+
+/* Glowing text effects */
+.gold-glow-text {
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+}

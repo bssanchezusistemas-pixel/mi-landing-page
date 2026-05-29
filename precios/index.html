@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Servicios & Precios — Bry Sánchez</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0A0A08;
+  --bg2:#111110;
+  --bg3:#191917;
+  --gold:#D4A843;
+  --gold2:#F0C96A;
+  --cream:#F2EBD9;
+  --muted:#6B6860;
+  --border:rgba(212,168,67,0.15);
+  --text:#E8E2D4;
+  --ff:'Syne',sans-serif;
+  --fb:'DM Sans',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--fb);font-weight:300;line-height:1.7;overflow-x:hidden;min-height:100vh}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-thumb{background:var(--gold)}
+
+/* NOISE OVERLAY */
+body::before{
+  content:'';position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:180px;opacity:0.025;pointer-events:none;z-index:0;
+}
+
+.page{position:relative;z-index:1;max-width:900px;margin:0 auto;padding:0 2rem}
+
+/* HERO */
+.hero{padding:5rem 0 4rem;border-bottom:0.5px solid var(--border)}
+.hero-tag{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:1.2rem;opacity:0;animation:up .7s ease forwards .2s}
+.hero h1{font-family:var(--ff);font-size:clamp(2.4rem,6vw,4.2rem);font-weight:800;line-height:1.05;color:var(--cream);margin-bottom:1rem;opacity:0;animation:up .7s ease forwards .4s}
+.hero h1 em{color:var(--gold);font-style:italic}
+.hero p{font-size:.95rem;color:var(--muted);max-width:480px;opacity:0;animation:up .7s ease forwards .6s}
+.hero-line{width:100%;height:.5px;background:linear-gradient(to right,var(--gold),transparent);margin-top:3rem;opacity:0;animation:up .7s ease forwards .8s}
+
+/* SECTION */
+.section{padding:4rem 0}
+.sec-tag{font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:.6rem}
+.sec-title{font-family:var(--ff);font-size:clamp(1.4rem,3vw,2rem);font-weight:700;color:var(--cream);margin-bottom:.5rem}
+.sec-sub{font-size:.88rem;color:var(--muted);margin-bottom:2.5rem}
+
+/* PLANES GRID */
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:.5px solid var(--border);margin-bottom:1px}
+.plan{background:var(--bg2);padding:1.8rem 1.4rem;position:relative;transition:background .3s}
+.plan:hover{background:var(--bg3)}
+.plan.featured{background:var(--bg3);border-top:2px solid var(--gold)}
+.plan-badge{position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--bg);font-family:var(--ff);font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:.25rem .8rem;white-space:nowrap}
+.plan-name{font-family:var(--ff);font-size:.8rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem}
+.plan-price{font-family:var(--ff);font-size:2rem;font-weight:800;color:var(--cream);line-height:1;margin-bottom:.2rem}
+.plan-price span{font-size:.8rem;font-weight:400;color:var(--muted);margin-left:.2rem}
+.plan-desc{font-size:.8rem;color:var(--muted);margin-bottom:1.4rem;padding-bottom:1.2rem;border-bottom:.5px solid var(--border)}
+.plan-features{list-style:none}
+.plan-features li{font-size:.82rem;color:var(--text);padding:.35rem 0;border-bottom:.5px solid rgba(255,255,255,0.04);display:flex;align-items:flex-start;gap:.5rem}
+.plan-features li:last-child{border-bottom:none}
+.plan-features li::before{content:'—';color:var(--gold);flex-shrink:0;margin-top:.05rem}
+.plan-features li.no{color:var(--muted)}
+.plan-features li.no::before{content:'—';color:var(--bg3)}
+
+/* AUTO ROW */
+.auto-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:.5px solid var(--border)}
+.auto-card{background:var(--bg2);padding:1.4rem;transition:background .3s}
+.auto-card:hover{background:var(--bg3)}
+.auto-icon{font-size:1.3rem;margin-bottom:.8rem}
+.auto-name{font-family:var(--ff);font-size:.95rem;font-weight:700;color:var(--cream);margin-bottom:.3rem}
+.auto-desc{font-size:.8rem;color:var(--muted);margin-bottom:.8rem;line-height:1.5}
+.auto-price{font-family:var(--ff);font-size:.78rem;font-weight:700;color:var(--gold);letter-spacing:.05em}
+
+/* MENSUAL */
+.mensual-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:.5px solid var(--border)}
+.m-card{background:var(--bg2);padding:1.4rem;text-align:center;transition:background .3s}
+.m-card:hover{background:var(--bg3)}
+.m-num{font-family:var(--ff);font-size:2rem;font-weight:800;color:var(--gold);line-height:1;margin-bottom:.3rem}
+.m-label{font-size:.78rem;color:var(--muted)}
+
+/* COMBO */
+.combo{background:var(--bg2);border:.5px solid var(--border);border-top:2px solid var(--gold);padding:2rem;margin-top:1px}
+.combo-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1.2rem;flex-wrap:wrap;gap:1rem}
+.combo-title{font-family:var(--ff);font-size:1.1rem;font-weight:700;color:var(--cream)}
+.combo-price{font-family:var(--ff);font-size:1.6rem;font-weight:800;color:var(--gold)}
+.combo-price small{font-size:.75rem;color:var(--muted);font-weight:400;display:block;text-align:right}
+.combo-items{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}
+.combo-item{font-size:.82rem;color:var(--text);display:flex;align-items:center;gap:.5rem}
+.combo-item::before{content:'✓';color:var(--gold);font-weight:700;flex-shrink:0}
+
+/* NOTA */
+.nota{background:var(--bg3);border-left:2px solid var(--gold);padding:1rem 1.2rem;font-size:.82rem;color:var(--muted);margin-top:2rem;line-height:1.6}
+.nota strong{color:var(--text)}
+
+/* FOOTER */
+.footer{padding:3rem 0;border-top:.5px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.footer-name{font-family:var(--ff);font-size:1rem;font-weight:700;color:var(--gold)}
+.footer-sub{font-size:.75rem;color:var(--muted)}
+.footer-contact{font-size:.8rem;color:var(--muted);text-align:right}
+.footer-contact a{color:var(--gold);text-decoration:none}
+
+/* REVEAL */
+.rev{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.rev.on{opacity:1;transform:none}
+
+@keyframes up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+
+/* MOBILE */
+@media(max-width:640px){
+  .plans,.mensual-grid{grid-template-columns:1fr}
+  .auto-grid{grid-template-columns:1fr}
+  .combo-header{flex-direction:column}
+  .combo-items{grid-template-columns:1fr}
+  .footer{flex-direction:column;text-align:center}
+  .footer-contact{text-align:center}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- HERO -->
+<header class="hero">
+  <span class="hero-tag">Servicios digitales · Norte del Valle del Cauca</span>
+  <h1>Webs & <em>Automatizaciones</em><br>para tu negocio</h1>
+  <p>Páginas web profesionales + sistemas automáticos con IA que trabajan por ti mientras atiendes a tus clientes.</p>
+  <div class="hero-line"></div>
+</header>
+
+<!-- PLANES WEB -->
+<section class="section rev">
+  <span class="sec-tag">01 — Diseño web</span>
+  <h2 class="sec-title">Tu negocio en internet</h2>
+  <p class="sec-sub">Una página que tus clientes encuentran en Google, ven tu menú y te contactan directo.</p>
+
+  <div class="plans">
+    <div class="plan">
+      <div class="plan-name">Básico</div>
+      <div class="plan-price">$250k <span>COP</span></div>
+      <p class="plan-desc">Para arrancar rápido y tener presencia online ya.</p>
+      <ul class="plan-features">
+        <li>Página de 1 sección</li>
+        <li>Botón de WhatsApp</li>
+        <li>Responsive (celular)</li>
+        <li>Entrega en 48h</li>
+        <li class="no">Sin dominio propio</li>
+        <li class="no">Sin galería</li>
+      </ul>
+    </div>
+    <div class="plan featured">
+      <div class="plan-badge">⭐ Más pedido</div>
+      <div class="plan-name">Estándar</div>
+      <div class="plan-price">$550k <span>COP</span></div>
+      <p class="plan-desc">La opción completa para la mayoría de negocios locales.</p>
+      <ul class="plan-features">
+        <li>Página con 5 secciones</li>
+        <li>Menú / servicios con precios</li>
+        <li>Galería de fotos</li>
+        <li>Botón WhatsApp + mapa</li>
+        <li>Dominio .com (1 año)</li>
+        <li>Responsive + HTTPS</li>
+      </ul>
+    </div>
+    <div class="plan">
+      <div class="plan-name">Premium</div>
+      <div class="plan-price">$1.2M <span>COP</span></div>
+      <p class="plan-desc">Para negocios que quieren destacar y generar más ventas.</p>
+      <ul class="plan-features">
+        <li>Todo lo del Estándar</li>
+        <li>Animaciones y efectos</li>
+        <li>SEO básico incluido</li>
+        <li>Formulario de reservas</li>
+        <li>Integración Instagram</li>
+        <li>2 meses de soporte</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- AUTOMATIZACIONES -->
+<section class="section rev">
+  <span class="sec-tag">02 — Automatizaciones con IA</span>
+  <h2 class="sec-title">Tu negocio trabajando solo</h2>
+  <p class="sec-sub">Sistemas que responden, publican y gestionan por ti — sin que tengas que estar pendiente.</p>
+
+  <div class="auto-grid">
+    <div class="auto-card">
+      <div class="auto-icon">💬</div>
+      <div class="auto-name">Respuesta automática WhatsApp</div>
+      <p class="auto-desc">Un asistente que responde al instante con tu menú, precios y horarios. Nunca más clientes sin respuesta.</p>
+      <div class="auto-price">$400k – $700k COP · pago único</div>
+    </div>
+    <div class="auto-card">
+      <div class="auto-icon">📅</div>
+      <div class="auto-name">Reservas automáticas</div>
+      <p class="auto-desc">El cliente elige su mesa o cita por WhatsApp sin que tú intervengas. Te llega la confirmación lista.</p>
+      <div class="auto-price">$600k – $1M COP · pago único</div>
+    </div>
+    <div class="auto-card">
+      <div class="auto-icon">📸</div>
+      <div class="auto-name">Publicaciones automáticas en redes</div>
+      <p class="auto-desc">Publica el menú del día, promociones o fotos en Instagram y Facebook sin hacer nada manualmente.</p>
+      <div class="auto-price">$400k – $800k COP · pago único</div>
+    </div>
+    <div class="auto-card">
+      <div class="auto-icon">⭐</div>
+      <div class="auto-name">Respuesta a reseñas de Google</div>
+      <p class="auto-desc">La IA responde automáticamente cada reseña nueva. Tu negocio siempre activo y con buena imagen.</p>
+      <div class="auto-price">$300k – $500k COP · pago único</div>
+    </div>
+  </div>
+</section>
+
+<!-- MANTENIMIENTO -->
+<section class="section rev">
+  <span class="sec-tag">03 — Mantenimiento mensual</span>
+  <h2 class="sec-title">Tranquilidad todos los meses</h2>
+  <p class="sec-sub">Tu web y tus automatizaciones funcionando siempre. Sin preocuparte por nada técnico.</p>
+
+  <div class="mensual-grid">
+    <div class="m-card">
+      <div class="m-num">$80k</div>
+      <div class="m-label">Hosting + página activa</div>
+    </div>
+    <div class="m-card">
+      <div class="m-num">$150k</div>
+      <div class="m-label">+ Cambios de menú y fotos</div>
+    </div>
+    <div class="m-card">
+      <div class="m-num">$300k</div>
+      <div class="m-label">+ Automatizaciones incluidas</div>
+    </div>
+  </div>
+</section>
+
+<!-- COMBO -->
+<section class="section rev">
+  <span class="sec-tag">04 — Paquete todo incluido</span>
+  <h2 class="sec-title">El combo completo</h2>
+  <p class="sec-sub">La mejor inversión para un negocio que quiere crecer en digital este año.</p>
+
+  <div class="combo">
+    <div class="combo-header">
+      <div>
+        <div class="combo-title">Web Estándar + WhatsApp automático + Mantenimiento 3 meses</div>
+        <p style="font-size:.8rem;color:var(--muted);margin-top:.3rem">Todo listo en menos de una semana</p>
+      </div>
+      <div class="combo-price">
+        $1.1M
+        <small>COP · pago único</small>
+      </div>
+    </div>
+    <div class="combo-items">
+      <div class="combo-item">Página web completa (5 secciones)</div>
+      <div class="combo-item">Dominio .com incluido (1 año)</div>
+      <div class="combo-item">WhatsApp con respuesta automática</div>
+      <div class="combo-item">Menú y galería de fotos</div>
+      <div class="combo-item">3 meses de mantenimiento</div>
+      <div class="combo-item">Soporte directo por WhatsApp</div>
+    </div>
+  </div>
+
+  <div class="nota">
+    <strong>¿Por qué vale la pena?</strong> Un solo cliente nuevo que llegue por tu página web ya paga el costo. La mayoría de negocios en la zona no tienen presencia digital — los que aparecen primero en Google ganan los clientes.
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer rev">
+  <div>
+    <div class="footer-name">Bry Sánchez</div>
+    <div class="footer-sub">Diseño web · Automatizaciones con IA · Norte del Valle del Cauca</div>
+  </div>
+  <div class="footer-contact">
+    <div>Zarzal / Roldanillo, Valle del Cauca</div>
+    <a href="https://wa.me/57XXXXXXXXXX">WhatsApp: [tu número]</a>
+  </div>
+</footer>
+
+</div>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('on'); obs.unobserve(e.target); } });
+}, { threshold: 0.08 });
+document.querySelectorAll('.rev').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
