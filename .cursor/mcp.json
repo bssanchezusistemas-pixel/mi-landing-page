@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "n8n": {
+      "url": "http://localhost:5678/mcp-server/http",
+      "headers": {
+        "Authorization": "Bearer ${env:N8N_API_KEY}"
+      }
+    }
+  }
+}
