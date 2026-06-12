@@ -16,13 +16,37 @@ Abre esta carpeta en Cursor. La skill y el MCP ya están en `.cursor/`.
 cp .env.example .env
 ```
 
-Edita `.env` con tu URL y API key de n8n:
+Edita `.env` con tu API key de n8n:
 
-- **N8N_API_URL** — ej: `https://mi-n8n.dominio.com/api/v1`
 - **N8N_API_KEY** — Settings → API → Create API Key
-- **N8N_WEBHOOK_URL** — ej: `https://mi-n8n.dominio.com`
+
+Para **n8n local** (puerto 5678), el MCP ya apunta a:
+
+`http://localhost:5678/mcp-server/http`
+
+Exporta la variable para que Cursor la lea (el MCP HTTP no usa `envFile`):
+
+```bash
+export N8N_API_KEY="tu_api_key"
+```
+
+O en Windows (PowerShell): `$env:N8N_API_KEY="tu_api_key"`
 
 Recarga Cursor: **Command Palette → Developer: Reload Window**.
+
+Verifica en **Settings → Tools & MCP** que el servidor `n8n` aparece en verde.
+
+### Probar conexión en tu máquina
+
+```bash
+curl -s http://localhost:5678/healthz
+curl -s http://localhost:5678/mcp-server/http \
+  -H "Authorization: Bearer TU_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"jsonrpc":"2.0","method":"tools/list","id":1,"params":{}}'
+```
+
+> **Nota:** `localhost` solo funciona en tu PC. Un agente en la nube no puede conectarse a tu n8n local.
 
 ## Paso 3 — Usar la skill
 

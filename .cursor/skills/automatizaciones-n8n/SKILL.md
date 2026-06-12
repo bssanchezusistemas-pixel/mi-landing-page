@@ -29,14 +29,21 @@ node --version 2>/dev/null || echo "NO_NODE"
 
 Si no hay Node.js, indica al usuario que instale la versión LTS desde https://nodejs.org. Sin Node.js solo puedes generar JSONs importables (modo offline).
 
-Configura el MCP del proyecto en `.cursor/mcp.json` (ya incluido en este kit). Las credenciales van en `.env` (nunca en el repo):
+Configura el MCP del proyecto en `.cursor/mcp.json` (ya incluido). Este kit usa el **MCP nativo de n8n**:
+
+- URL: `http://localhost:5678/mcp-server/http`
+- Auth: `Authorization: Bearer` + API key
+
+La API key va en variable de entorno `N8N_API_KEY` (nunca en el repo):
 
 ```bash
 cp .env.example .env
-# Edita .env con N8N_API_URL, N8N_API_KEY y N8N_WEBHOOK_URL
+export N8N_API_KEY="tu_api_key"   # el MCP HTTP no lee .env automáticamente
 ```
 
-Tras editar `.env` o `.cursor/mcp.json`, pide al usuario **recargar la ventana de Cursor** (Command Palette → "Developer: Reload Window") para activar el MCP.
+Tras configurar, pide **recargar la ventana de Cursor** (Command Palette → "Developer: Reload Window").
+
+**Importante:** `localhost` solo es accesible en la máquina del usuario. Un Cloud Agent remoto no puede conectarse a su n8n local.
 
 ### Verificar skills de n8n
 
